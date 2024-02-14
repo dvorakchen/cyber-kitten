@@ -2,7 +2,8 @@
 a kitten
 
 # prerequisite
-build by Leptos, so you need Rust and Leptos tools first
+build by Leptos, so you need Rust and Leptos tools first,
+details in [Leptos.dev](https://book.leptos.dev/)
 
 # Start
 trunk serve --open
