@@ -51,7 +51,7 @@ fn Cat() -> impl IntoView {
 
     view! {
         <div on:click=handle_click_cat>
-            <div class="opacity-100 transition-all duration-1000" node_ref=cat_box>
+            <div class="opacity-100 transition-all duration-1000 leading-5" node_ref=cat_box>
                 {show_cat}
             </div>
         </div>
