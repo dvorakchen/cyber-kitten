@@ -41,16 +41,18 @@ pub const CAT_SLEEP: [&'static str; 4] = [
 pub fn CatSleep() -> impl IntoView {
     let (index, set_index) = create_signal(0usize);
 
-    Interval::new(500, move || {
-        set_index.try_update(|v| {
+    let sleep_handler = Interval::new(500, move || {
+        set_index.update(|v| {
             if *v == CAT_SLEEP.len() - 1 {
                 *v = 0;
             } else {
                 *v += 1;
             }
         });
-    })
-    .forget();
+    });
+    on_cleanup(|| {
+        drop(sleep_handler);
+    });
 
     let place_cat = move || build_cat_view(CAT_SLEEP[index.get()]);
 

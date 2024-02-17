@@ -92,14 +92,16 @@ pub fn CatSit() -> impl IntoView {
     let (index, set_index) = create_signal(0isize);
     let mut flag: isize = -1;
 
-    Interval::new(500, move || {
+    let shake_tail_handler = Interval::new(500, move || {
         match index.get_untracked() {
             v if v == 0 || v == (CAT_SIT.len() - 1) as isize => flag = -flag,
             _ => {}
         };
         set_index.update(|v| *v += flag);
-    })
-    .forget();
+    });
+    on_cleanup(|| {
+        drop(shake_tail_handler);
+    });
 
     let handle_click_cat = move |_| {
         let meow: HtmlElement<html::Audio> = meow.get().unwrap();
