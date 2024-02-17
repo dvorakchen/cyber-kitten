@@ -4,7 +4,7 @@ use super::build_cat_view;
 use gloo::timers::callback::Interval;
 use leptos::*;
 
-pub const CAT_SIT: [&'static str; 5] = [
+const CAT_SIT: [&'static str; 5] = [
     r"
  /\____/\
  )     (

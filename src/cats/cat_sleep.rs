@@ -2,7 +2,7 @@ use super::build_cat_view;
 use gloo::timers::callback::Interval;
 use leptos::*;
 
-pub const CAT_SLEEP: [&'static str; 4] = [
+const CAT_SLEEP: [&'static str; 4] = [
     r"
    
     
